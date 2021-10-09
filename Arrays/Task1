@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Main
+{
+    
+	public static void main(String[] args) {
+		//test for the first task
+		int[] testArray = inputUserIntArray("Input your array here... \n");
+		int testDivider = inputUserIntNumber("Input your divider...");
+		System.out.println("Result is " + takeSumOfDividedNumbers(testArray, testDivider));
+	}
+	
+	public static int takeSumOfDividedNumbers(int[] checkingArray, int divider){
+	    int sum = 0;
+	    for (int i = 0; i < checkingArray.length; i++){
+	        if (checkingArray[i]%divider==0) sum += checkingArray[i];
+	        else sum += 0;
+	        }
+        return sum; 	    
+	}
+	
+	public static int inputUserIntNumber(String message){
+        System.out.println(message);
+        Scanner scn = new Scanner(System.in);
+        return scn.nextInt();
+    }
+	
+	public static int[] inputUserIntArray(String message){
+	    System.out.print(message); //you must input array in one line, every number after space (f.e. 1 3 53 34)
+        Scanner userScn = new Scanner(System.in);
+        String userString = userScn.nextLine();
+        String[] userStringArray = userString.split("[ ]");
+	    
+	    int[] userIntArray = new int [userStringArray.length];
+	    for (int i = 0; i < userStringArray.length; i++) userIntArray[i] = Integer.parseInt(userStringArray[i]);
+	    
+        return userIntArray;
+	}
+}
