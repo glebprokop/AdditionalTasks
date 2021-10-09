@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-//Task 2
-public class Main
+//Task 3
+public class Task3
 {
     
 	public static void main(String[] args) {
