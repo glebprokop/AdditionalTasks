@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+//Task 4
+public class Task4
+{
+    
+	public static void main(String[] args) {
+ 		//test for the second task
+ 		int[] testArray = inputUserIntArray("Input your array here... \n");
+ 		
+ 		int[] resultArray = changeMaxAndMin(testArray);
+ 		for (int i = 0; i < resultArray.length; i++) System.out.print(resultArray[i] + " ");
+	}
+	
+ 	public static int[] changeMaxAndMin(int[] checkingArray){
+ 	    int maxValueIndex = getMax(checkingArray);
+ 	    int minValueIndex = getMin(checkingArray);
+ 	    int valueForXhange = checkingArray[maxValueIndex];
+ 	    
+ 	    //changing
+ 	    checkingArray[maxValueIndex] = checkingArray[minValueIndex];
+ 	    checkingArray[minValueIndex] = valueForXhange;
+ 	    
+ 	    return checkingArray;
+ 	}    
+	    
+	public static int getMax(int[] checkingArray){
+	    int maxIndex = 0;
+	    for (int i = 0; i < checkingArray.length; i++){
+	        if (checkingArray[maxIndex] < checkingArray[i]) maxIndex = i;
+	        }
+	    return maxIndex;
+	}
+	    
+	public static int getMin(int[] checkingArray){
+	    int minIndex = 0;
+	    for (int i = 0; i < checkingArray.length; i++){
+	        if (checkingArray[minIndex] > checkingArray[i]) minIndex = i;
+	        }
+	    return minIndex;
+	}
+	    
+	public static int inputUserIntNumber(String message){
+        System.out.println(message);
+        Scanner scn = new Scanner(System.in);
+        return scn.nextInt();
+    }
+	
+	public static int[] inputUserIntArray(String message){
+	    System.out.print(message); //you must input array in one line, every number after space (f.e. 1 3 53 34)
+        Scanner userScn = new Scanner(System.in);
+        String userString = userScn.nextLine();
+        String[] userStringArray = userString.split("[ ]");
+	    
+	    int[] userIntArray = new int [userStringArray.length];
+	    for (int i = 0; i < userStringArray.length; i++) userIntArray[i] = Integer.parseInt(userStringArray[i]);
+	    
+        return userIntArray;
+	}
+}
