@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+//Task 2
+public class Task2
+{
+    
+	public static void main(String[] args) {
+		//test for the second task
+		int[] testArray = inputUserIntArray("Input your array here... \n");
+		int testNumberZ = inputUserIntNumber("Input your Z-number...");
+		
+		int[][] functionWorkArray = calculateOfReplacements(testArray, testNumberZ);
+		
+		//output in console
+		System.out.println("Number of replacement is " + functionWorkArray[0][0]);
+		for (int i = 0; i < functionWorkArray[1].length; i++) System.out.print(functionWorkArray[1][i] + " ");
+	}
+	
+	public static int[][] calculateOfReplacements(int[] checkingArray, int numberZ){
+	    int[] sum = {0};
+	    for (int i = 0; i < checkingArray.length; i++){
+	        if (checkingArray[i]>numberZ) {
+	            sum[0] += 1;
+	            checkingArray[i] = numberZ;
+	        }
+	    }
+	    return new int[][] {sum, checkingArray}; 	    
+	}
+	
+	public static int inputUserIntNumber(String message){
+        System.out.println(message);
+        Scanner scn = new Scanner(System.in);
+        return scn.nextInt();
+    }
+	
+	public static int[] inputUserIntArray(String message){
+	    System.out.print(message); //you must input array in one line, every number after space (f.e. 1 3 53 34)
+        Scanner userScn = new Scanner(System.in);
+        String userString = userScn.nextLine();
+        String[] userStringArray = userString.split("[ ]");
+	    
+	    int[] userIntArray = new int [userStringArray.length];
+	    for (int i = 0; i < userStringArray.length; i++) userIntArray[i] = Integer.parseInt(userStringArray[i]);
+	    
+        return userIntArray;
+	}
+}
